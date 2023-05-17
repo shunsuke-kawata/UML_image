@@ -1,4 +1,4 @@
-@startuml05_Login.png 
+@startuml07_ShoppingCart.png 
 package boundary {
   class "ショッピングカート画面" as LoginUI<<boundary>>  {
   } 

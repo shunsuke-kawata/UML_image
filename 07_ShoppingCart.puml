@@ -1,0 +1,30 @@
+@startuml05_Login.png 
+package boundary {
+  class "ショッピングカート画面" as LoginUI<<boundary>>  {
+  } 
+}
+package control { 
+  class ShoppingCartManager<<control>> {
+    +order(商品番号: String, 単位:Int, 単価: Int,数量: Int) 
+    +changeMarchandiseCount(商品番号: String, 単位:Int,数量: Int)
+    +searchOtherMarchandise()
+    +deleleOrder(商品番号: String, 単位:Int, 単価: Int,数量: Int)
+  } 
+}
+
+
+package "entity" {
+  class "商品カタログ" as MarchandiseCatalog<<entity>> {
+    -商品番号: String
+    -商品名: String
+    -単価: Int
+    -メーカ名: String
+    -型番: String
+    -取扱単位: String
+    -商品画像: Int
+  }
+} 
+  
+LoginUI .right.> ShoppingCartManager: <<uses>> 
+ShoppingCartManager"1" o-right-"1..*" MarchandiseCatalog
+@enduml

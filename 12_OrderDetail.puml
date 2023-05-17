@@ -1,0 +1,26 @@
+@startuml12_OrderDetail.png 
+package boundary {
+  class "注文明細画面" as LoginUI<<boundary>>  {
+  } 
+}
+package control { 
+  class OrderDetailManager<<control>> {
+    +cancelOrder(商品番号: String) 
+    +backPage()
+  } 
+}
+
+
+package "entity" {
+  class "注文" as Order<<entity>> {
+    -注文番号: String
+    -注文日: Int
+    -注文合計金額: String
+    -配送希望日: Int
+    -受注状態: Int
+  }
+} 
+  
+LoginUI .right.> OrderDetailManager: <<uses>> 
+OrderDetailManager"1" o-right-"1..1" Order
+@enduml

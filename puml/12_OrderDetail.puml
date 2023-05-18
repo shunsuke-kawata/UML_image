@@ -1,6 +1,6 @@
 @startuml12_OrderDetail.png 
 package boundary {
-  class "注文明細画面" as LoginUI<<boundary>>  {
+  class "注文明細画面" as OrderDetailUI<<boundary>>  {
   } 
 }
 package control { 
@@ -20,7 +20,40 @@ package "entity" {
     -受注状態: Int
   }
 } 
+
+package "entity" {
+  class "注文明細" as OrderDetail<<entity>> {
+    -数量: Int
+    -小計: Int
+    -納品状態: Int
+    -商品単価: Int
+  }
+} 
+
+package "entity" {
+  class "商品カタログ" as MarchandiseCatalog<<entity>> {
+    -商品番号: String
+    -商品名: String
+    -単価: Int
+    -メーカ名: String
+    -型番: String
+    -取扱単位: String
+    -商品画像: Int
+  }
+} 
+
+package "entity" {
+  class "配送先" as DeliberyDestination<<entity>> {
+    -発送先郵便番号: String
+    -発送先住所: String
+    -発送先郵便番号: String
+  }
+} 
   
-LoginUI .right.> OrderDetailManager: <<uses>> 
+OrderDetailUI .right.> OrderDetailManager: <<uses>> 
+OrderDetailUI"1" o-right-"1..1" OrderDetail
+OrderDetailUI"1" o-right-"1..1" Order
+OrderDetailUI"1" o-right-"1..1" DeliberyDestination
+OrderDetailUI"1" o-right-"1..1" MarchandiseCatalog
 OrderDetailManager"1" o-right-"1..1" Order
 @enduml

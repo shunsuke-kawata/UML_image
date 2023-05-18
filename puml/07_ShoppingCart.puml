@@ -1,6 +1,6 @@
 @startuml07_ShoppingCart.png 
 package boundary {
-  class "ショッピングカート画面" as LoginUI<<boundary>>  {
+  class "ショッピングカート画面" as ShoppingCartUI<<boundary>>  {
   } 
 }
 package control { 
@@ -25,6 +25,7 @@ package "entity" {
   }
 } 
   
-LoginUI .right.> ShoppingCartManager: <<uses>> 
+ShoppingCartUI .right.> ShoppingCartManager: <<uses>> 
+ShoppingCartUI"1" o-right-"1..1" MarchandiseCatalog
 ShoppingCartManager"1" o-right-"1..*" MarchandiseCatalog
 @enduml

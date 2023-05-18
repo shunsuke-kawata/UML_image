@@ -1,6 +1,6 @@
 @startuml11_OrderHistory.png 
 package boundary {
-  class "注文履歴画面" as LoginUI<<boundary>>  {
+  class "注文履歴画面" as OrderHistoryUI<<boundary>>  {
   } 
 }
 package control { 
@@ -20,6 +20,9 @@ package "entity" {
   }
 } 
   
-LoginUI .right.> OrderHistoryManager: <<uses>> 
+OrderHistoryUI .right.> OrderHistoryManager: <<uses>> 
+OrderHistoryUI"1" o-right-"1..1" Order
 OrderHistoryManager"1" o-right-"1..1" Order
 @enduml
+
+
